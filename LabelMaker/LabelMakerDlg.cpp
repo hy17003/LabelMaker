@@ -559,7 +559,15 @@ BOOL CLabelMakerDlg::PreTranslateMessage(MSG* pMsg)
 
 void CLabelMakerDlg::OpenImageOfList(int index)
 {
-	if (index < filelist.size())
+	if (index < 0)
+	{
+		MessageBox(_T("文件到头了！"));
+	}
+	else if (index >= filelist.size())
+	{
+		MessageBox(_T("文件到尾了！"));
+	}
+	else
 	{
 		m_ctrList.SetCurSel(index);
 		CString filePath = filelist[index];
