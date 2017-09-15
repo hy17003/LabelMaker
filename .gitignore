@@ -1,0 +1,8 @@
+ipch/
+Debug/LabelMaker.ilk
+Debug/LabelMaker.pdb
+Release/LabelMaker.pdb
+LabelMaker.opensdf
+LabelMaker.sdf
+LabelMaker/Debug/
+LabelMaker/Release/
