@@ -240,6 +240,7 @@ void CLabelMakerDlg::OnBnClickedBtnOpen()
 		m_strPath.Format(_T("%s"), szPath);
 	}
 	UpdateData(FALSE);
+	filelist.clear();
 	RecursiveFindFile(m_strPath);
 	ShowFileList();
 	if (filelist.size() > 0)
@@ -313,6 +314,10 @@ void CLabelMakerDlg::OnMouseMove(UINT nFlags, CPoint point)
 				ipt2 = ToCVPoint(pt2);
 				ipt1 = PICControlToImage(ipt1, frame);
 				ipt2 = PICControlToImage(ipt2, frame);
+				cv::rectangle(tmp, targetRect, cv::Scalar(0, 255, 0), 2);
+				cv::line(tmp, cv::Point(ipt2.x, 0), cv::Point(ipt2.x, tmp.rows - 1), cv::Scalar(0, 255, 255));
+				cv::line(tmp, cv::Point(0, ipt2.y), cv::Point(tmp.cols - 1, ipt2.y), cv::Scalar(0, 255, 255));
+				ShowImage(IDC_PIC, &m_dib, tmp);
 				cv::Rect tmpRect(ipt1, ipt2);
 				if (m_iType)
 				{
@@ -344,10 +349,10 @@ void CLabelMakerDlg::OnMouseMove(UINT nFlags, CPoint point)
 				}
 				targetRect = cv::Rect(ipt1, ipt2);
 				bToSave = TRUE;
-				cv::rectangle(tmp, targetRect, cv::Scalar(0, 255, 0), 2);
+				/*cv::rectangle(tmp, targetRect, cv::Scalar(0, 255, 0), 2);
 				cv::line(tmp, cv::Point(ipt2.x, 0), cv::Point(ipt2.x, tmp.rows - 1), cv::Scalar(0, 255, 255));
 				cv::line(tmp, cv::Point(0, ipt2.y), cv::Point(tmp.cols - 1, ipt2.y), cv::Scalar(0, 255, 255));
-				ShowImage(IDC_PIC, &m_dib, tmp);
+				ShowImage(IDC_PIC, &m_dib, tmp);*/
 			}
 		}
 		if (frame.data)

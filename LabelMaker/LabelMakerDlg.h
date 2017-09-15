@@ -31,6 +31,7 @@ private:
 	void OpenImageOfList(int index);
 	void SaveLabel(CString labelPath, CString imagePath, cv::Rect targetRect);
 	void ShowInformation(CString strInfo);
+//	cv::Rect getOuterRect(cv::Rect centerRect);
 // Implementation
 protected:
 	HICON m_hIcon;
